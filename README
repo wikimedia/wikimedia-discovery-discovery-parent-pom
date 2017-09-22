@@ -1,0 +1,22 @@
+Discovery parent POM
+====================
+
+This project provides a common configuration for Maven based projects of the
+Wikimedia Discovery team. If factorize common configuration and build process.
+This allow to have more coherent projects and reuse the efforts done in
+configuring various build plugins.
+
+What does this pom contains
+---------------------------
+
+* Fixed versions of all plugins.
+* A small set of dependencies that should make sense in all projects. This is
+  provided as a <dependencyManagement/> section, so you don't have to use them.
+* Configuration of some static analysis and quality tools.
+* Standardization on UTF-8 and Java 8.
+
+How to use
+----------
+
+Have your project inherit from this pom. Override the settings which do not
+make sense for your project. At least the <scm/> section should be overridden.
