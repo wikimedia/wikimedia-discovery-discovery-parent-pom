@@ -14,6 +14,8 @@
             <property name="allowUndeclaredRTE" value="true" /> <!-- You aren't supposed to declare these anyway... -->
             <property name="allowMissingReturnTag" value="true" /> <!-- Sometimes its just overkill -->
             <property name="allowMissingParamTags" value="true" /> <!-- Sometimes its just overkill -->
+            <property name="allowMissingThrowsTags" value="true" /> <!-- Sometimes its just overkill -->
+            <property name="allowMissingPropertyJavadoc" value="true" /> <!-- Sometimes its just overkill -->
             <property name="tokens" value="METHOD_DEF" /> <!-- Constructors don't always need Javadoc -->
             <property name="excludeScope" value="private" />
         </module>
@@ -91,7 +93,6 @@
         <module name="DefaultComesLast" />
         <module name="FallThrough" />
         <module name="MultipleVariableDeclarations" />
-        <module name="VisibilityModifier" /> <!-- May as well follow standard Java style here -->
         <module name="FinalClass" />
         <module name="HideUtilityClassConstructor" />
         <!-- This one usually offers good to interesting suggestions but its too much work to implement now. <module name="DesignForExtension"/> -->
