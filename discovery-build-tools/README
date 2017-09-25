@@ -1,0 +1,9 @@
+discovery-build-tools
+=====================
+
+IntelliJ settings
+-----------------
+
+IntelliJ settings are built by Maven (`mvn package`) and available as
+`target/discovery-build-tools-<version>-intellij-config.jar`. They can be
+imported in IntelliJ with `File` -> `Import Settings...`.
