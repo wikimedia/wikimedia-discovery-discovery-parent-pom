@@ -27,9 +27,6 @@
     <prerequisites>
         <maven>3.3.1</maven>
     </prerequisites>
-    <modules>
-        <module>discovery-build-tools</module>
-    </modules>
 
     <scm>
         <connection>scm:git:https://gerrit.wikimedia.org/r/discovery/discovery-parent-pom</connection>
@@ -56,6 +53,7 @@
     </distributionManagement>
 
     <properties>
+        <discovery-maven-tool-configs.version>1.0-SNAPSHOT</discovery-maven-tool-configs.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -159,6 +157,11 @@
                             <artifactId>spotbugs</artifactId>
                             <version>${spotbugs.version}</version>
                         </dependency>
+                        <dependency>
+                            <groupId>org.wikimedia.discovery</groupId>
+                            <artifactId>discovery-maven-tool-configs</artifactId>
+                            <version>${discovery-maven-tool-configs.version}</version>
+                        </dependency>
                     </dependencies>
                     <executions>
                         <execution>
@@ -187,22 +190,22 @@
                         <signaturesArtifacts>
                             <signaturesArtifact>
                                 <groupId>org.wikimedia.discovery</groupId>
-                                <artifactId>discovery-build-tools</artifactId>
-                                <version>1.0-SNAPSHOT</version>
+                                <artifactId>discovery-maven-tool-configs</artifactId>
+                                <version>${discovery-maven-tool-configs.version}</version>
                                 <type>jar</type>
                                 <path>org/wikimedia/discovery/build/tools/forbidden/all-signatures.txt</path>
                             </signaturesArtifact>
                             <signaturesArtifact>
                                 <groupId>org.wikimedia.discovery</groupId>
-                                <artifactId>discovery-build-tools</artifactId>
-                                <version>1.0-SNAPSHOT</version>
+                                <artifactId>discovery-maven-tool-configs</artifactId>
+                                <version>${discovery-maven-tool-configs.version}</version>
                                 <type>jar</type>
                                 <path>org/wikimedia/discovery/build/tools/forbidden/core-signatures.txt</path>
                             </signaturesArtifact>
                             <signaturesArtifact>
                                 <groupId>org.wikimedia.discovery</groupId>
-                                <artifactId>discovery-build-tools</artifactId>
-                                <version>1.0-SNAPSHOT</version>
+                                <artifactId>discovery-maven-tool-configs</artifactId>
+                                <version>${discovery-maven-tool-configs.version}</version>
                                 <type>jar</type>
                                 <path>org/wikimedia/discovery/build/tools/forbidden/test-signatures.txt</path>
                             </signaturesArtifact>
@@ -219,15 +222,15 @@
                                 <signaturesArtifacts>
                                     <signaturesArtifact>
                                         <groupId>org.wikimedia.discovery</groupId>
-                                        <artifactId>discovery-build-tools</artifactId>
-                                        <version>1.0-SNAPSHOT</version>
+                                        <artifactId>discovery-maven-tool-configs</artifactId>
+                                        <version>${discovery-maven-tool-configs.version}</version>
                                         <type>jar</type>
                                         <path>org/wikimedia/discovery/build/tools/forbidden/all-signatures.txt</path>
                                     </signaturesArtifact>
                                     <signaturesArtifact>
                                         <groupId>org.wikimedia.discovery</groupId>
-                                        <artifactId>discovery-build-tools</artifactId>
-                                        <version>1.0-SNAPSHOT</version>
+                                        <artifactId>discovery-maven-tool-configs</artifactId>
+                                        <version>${discovery-maven-tool-configs.version}</version>
                                         <type>jar</type>
                                         <path>org/wikimedia/discovery/build/tools/forbidden/core-signatures.txt</path>
                                     </signaturesArtifact>
@@ -244,15 +247,15 @@
                                 <signaturesArtifacts>
                                     <signaturesArtifact>
                                         <groupId>org.wikimedia.discovery</groupId>
-                                        <artifactId>discovery-build-tools</artifactId>
-                                        <version>1.0-SNAPSHOT</version>
+                                        <artifactId>discovery-maven-tool-configs</artifactId>
+                                        <version>${discovery-maven-tool-configs.version}</version>
                                         <type>jar</type>
                                         <path>org/wikimedia/discovery/build/tools/forbidden/all-signatures.txt</path>
                                     </signaturesArtifact>
                                     <signaturesArtifact>
                                         <groupId>org.wikimedia.discovery</groupId>
-                                        <artifactId>discovery-build-tools</artifactId>
-                                        <version>1.0-SNAPSHOT</version>
+                                        <artifactId>discovery-maven-tool-configs</artifactId>
+                                        <version>${discovery-maven-tool-configs.version}</version>
                                         <type>jar</type>
                                         <path>org/wikimedia/discovery/build/tools/forbidden/test-signatures.txt</path>
                                     </signaturesArtifact>
@@ -290,8 +293,8 @@
                         </dependency>
                         <dependency>
                             <groupId>org.wikimedia.discovery</groupId>
-                            <artifactId>discovery-build-tools</artifactId>
-                            <version>1.0-SNAPSHOT</version>
+                            <artifactId>discovery-maven-tool-configs</artifactId>
+                            <version>${discovery-maven-tool-configs.version}</version>
                         </dependency>
                     </dependencies>
                     <executions>
