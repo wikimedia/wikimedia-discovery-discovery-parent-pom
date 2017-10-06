@@ -87,6 +87,12 @@
                 <optional>true</optional>
             </dependency>
             <dependency>
+                <groupId>net.jcip</groupId>
+                <artifactId>jcip-annotations</artifactId>
+                <version>1.0</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.16.18</version>
@@ -96,12 +102,6 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.jcip</groupId>
-                <artifactId>jcip-annotations</artifactId>
-                <version>1.0</version>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
@@ -349,7 +349,7 @@
                             <requireMavenVersion>
                                 <version>3.3.1</version>
                             </requireMavenVersion>
-                            <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule" />
+                            <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule"></NoPackageCyclesRule>
                         </rules>
                     </configuration>
                     <dependencies>

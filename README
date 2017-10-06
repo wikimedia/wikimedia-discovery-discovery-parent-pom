@@ -1,13 +1,11 @@
-Discovery parent POM
-====================
+# Discovery parent POM
 
 This project provides a common configuration for Maven based projects of the
 Wikimedia Discovery team. If factorize common configuration and build process.
 This allow to have more coherent projects and reuse the efforts done in
 configuring various build plugins.
 
-What does this pom contains
----------------------------
+## What does this pom contains
 
 * Fixed versions of all plugins.
 * A small set of dependencies that should make sense in all projects. This is
@@ -15,8 +13,172 @@ What does this pom contains
 * Configuration of some static analysis and quality tools.
 * Standardization on UTF-8 and Java 8.
 
-How to use
-----------
+## How to use
 
 Have your project inherit from this pom. Override the settings which do not
 make sense for your project. At least the <scm/> section should be overridden.
+
+## More details
+
+This is a non exhaustive list of things that are configured in this pom. Read
+the pom itself if you want all the details.
+
+### Distribution Management
+
+The standard Sonatype OSS endpoints are configured. This can be used to upload
+artifacts to Maven Central.
+
+### Standard Properties
+
+* `maven.compiler.source=1.8`
+* `maven.compiler.target=1.8`
+* `project.build.sourceEncoding=UTF-8`
+* `project.reporting.outputEncoding=UTF-8`
+
+These properties can be overridden in child projects, but there should be no
+reason to do so.
+
+### Dependency Management
+
+Some standard dependencies are provided. Note that `<dependencyManagement/>`
+does not add those dependencies to the classpath of child projects, it only
+fixes the versions. The provided dependencies are either test dependencies or
+annotations that are used by static analysis tools. They are provided as an
+indication that those are interesting libraries, that you should probably
+discover if you don't already know them.
+
+### plugins
+
+#### sortpom-maven-plugin
+
+Ensure the pom is sorted in the recommended order. Having a stable order
+ensures that diffs in code reviews are not subject to reordering noise. Having
+a standard order makes it slightly easier to find your way in a pom.
+
+To sort an existing pom: `mvn sortpom:sort`.
+
+#### spotbugs-maven-plugin
+
+[Spotbugs](https://spotbugs.github.io/) is the successor to Findbugs. It is a
+static analyzer which finds some interesting bugs and code smells. If you use
+JSR305 annotations, it can do additional checks. Rules can be ignored with the
+`@SupressFBWarnings(value="RULE_ID", justification="Why you don't care")`
+annotation.
+
+#### forbiddenapis
+
+Checks for methods you should never use. For example deprecated methods,
+methods that have known performance issues, ...
+
+#### maven-checkstyle-plugin
+
+The usual Java linter. Mostly about style, but some rules help discover actual
+bugs. Rules chan be ignored with `@SupressWarnings("checkstyle:NameOfRule")`.
+
+#### maven-enforcer-plugin
+
+The maven-enforcer-plugin can enforce a number of rules. At the moment, we
+enforce:
+
+* a minimal Maven version
+* no package cycles are allowed
+
+While it is a really good idea to not have cyclic dependencies between packages
+for the usual modularity reasons, those tend to creep into existing code
+whenever you turn your back on it. To disable the plugin while you fix those,
+the following can be added to the child pom, in the `<plugins>` section:
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-enforcer-plugin</artifactId>
+    <executions>
+          <execution>
+                <id>enforce-rules</id>
+                <!-- disable enforcer as this project has package cyclic dependencies -->
+                <phase>none</phase>
+          </execution>
+    </executions>
+    </plugin>
+<plugin>
+```
+
+#### duplicate-finder-maven-plugin
+
+Fail if multiple versions of the same class exist on the classpath (jar hell).
+You can reconfigure the plugin in a child pom to exclude some dependencies from
+analysis:
+
+```
+<plugin>
+    <groupId>org.basepom.maven</groupId>
+    <artifactId>duplicate-finder-maven-plugin</artifactId>
+    <configuration>
+        <ignoredDependencies>
+            <!--
+                the following dependencies are problematic but non trivial to
+                clean, it will come in a second time...
+            -->
+            <dependency>
+                <groupId>org.my.group.id</groupId>
+                <artifactId>artifact-id</artifactId>
+            </dependency>
+        </ignoredDependencies>
+    </configuration>
+</plugin>
+```
+
+#### git-commit-id-plugin
+
+Create a git.properties file containing information on the current git commit.
+This can be used either to track where a jar comes from, or actively in your
+application, parsing it at runtime.
+
+#### Standard Plugins
+
+The version of all standard Maven plugins are defined, so that they don't
+change unexpectedly.
+
+### Reports
+
+A number of reports are configured. Those will be generated as part of the
+maven site. Use `mvn site:site` to generate the site. In a multi module
+project, use `mvn site:site site:stage` to aggregate the sites of each modules.
+
+## Building
+
+### Maven Wrapper
+
+This project bundles [Maven Wrapper](https://github.com/takari/maven-wrapper).
+This means that you don't need to install Maven, just use `./mvnw` instead of
+the `mvn` command. Maven Wrapper help ensure all developer use the same version
+of Maven.
+
+### Dependencies
+
+Some of the configuration of the static analysis tools are bundled in a
+separate project (discovery-maven-tool-configs). When a change is made to those
+configs, the following must be done:
+
+* release a new version of discovery-maven-tool-config
+* update the `discovery-maven-tool-configs.version` property in the
+  discovery-parent-pom project
+* release a new version of discovery-parent-pom
+
+### Deploy a SNAPSHOT
+
+To deploy a new SNAPSHOT to Sonatype OSS SNAPSHOT repository, just run:
+`./mvnw deploy`. This requires your Sonatype credentials to be configured in
+your `settings.xml`.
+
+### Release
+
+As part of the release, we upload artifacts to Sonatype OSS. This requires
+signing the artifacts. So in addition to the SNAPSHOT deployment prerequisites,
+you will need a GPG key. You will be prompted for the passphrase during the
+`release:perform` phase.
+
+To release:
+
+* `./mvnw release:prepare`
+* `./mvnw release:perform`
