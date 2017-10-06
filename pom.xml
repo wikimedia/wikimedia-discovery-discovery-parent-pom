@@ -4,7 +4,7 @@
 
     <groupId>org.wikimedia.discovery</groupId>
     <artifactId>discovery-parent-pom</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Discovery parent pom</name>
@@ -36,7 +36,7 @@
     <scm>
         <connection>scm:git:https://gerrit.wikimedia.org/r/a/wikimedia/discovery/discovery-parent-pom</connection>
         <developerConnection>scm:git:ssh://gerrit.wikimedia.org:29418/wikimedia/discovery/discovery-parent-pom</developerConnection>
-        <tag>discovery-parent-pom-1.0</tag>
+        <tag>HEAD</tag>
         <url>https://gerrit.wikimedia.org/r/#/admin/projects/wikimedia/discovery/discovery-parent-pom</url>
     </scm>
 
@@ -349,7 +349,7 @@
                             <requireMavenVersion>
                                 <version>3.3.1</version>
                             </requireMavenVersion>
-                            <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule"></NoPackageCyclesRule>
+                            <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule" />
                         </rules>
                     </configuration>
                     <dependencies>
