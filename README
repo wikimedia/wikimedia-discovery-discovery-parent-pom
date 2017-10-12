@@ -70,6 +70,8 @@ annotation.
 Checks for methods you should never use. For example deprecated methods,
 methods that have known performance issues, ...
 
+This check can be ignored by the @SuppressForbidden annotation.
+
 #### maven-checkstyle-plugin
 
 The usual Java linter. Mostly about style, but some rules help discover actual
