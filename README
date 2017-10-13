@@ -47,6 +47,17 @@ annotations that are used by static analysis tools. They are provided as an
 indication that those are interesting libraries, that you should probably
 discover if you don't already know them.
 
+#### Lombok
+
+If you decide to use [Lombok](http://jnb.ociweb.com/jnb/jnbJan2010.html) you
+should probably add a `lombok.config` file in your main package. See the
+[docs](https://projectlombok.org/features/configurationhttps://projectlombok.org/features/configuration)
+if you want more infos.
+
+        lombok.equalsAndHashCode.callSuper = call
+        lombok.extern.findbugs.addSuppressFBWarnings = true
+        lombok.addLombokGeneratedAnnotation = true
+
 ### plugins
 
 #### sortpom-maven-plugin
