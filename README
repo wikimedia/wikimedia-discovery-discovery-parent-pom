@@ -141,6 +141,13 @@ analysis:
 </plugin>
 ```
 
+### jacoco-maven-plugin
+
+Calculates the coverage of unit tests. Coverage of integration tests is not
+tracked as usually this isn't a metric which makes much sense. It is possible
+to make the build fail if a minimal coverage is not met, but this isn't active
+at the moment. Feel free to enable such check in your child project.
+
 #### git-commit-id-plugin
 
 Create a git.properties file containing information on the current git commit.
