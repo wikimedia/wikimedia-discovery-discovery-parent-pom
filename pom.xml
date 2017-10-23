@@ -63,13 +63,14 @@
     </distributionManagement>
 
     <properties>
-        <discovery-maven-tool-configs.version>1.4</discovery-maven-tool-configs.version>
+        <discovery-maven-tool-configs.version>1.5</discovery-maven-tool-configs.version>
+        <forbiddenapis.version>2.4.1</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <slf4j.version>1.7.25</slf4j.version>
-        <spotbugs.version>3.1.0-RC5</spotbugs.version>
+        <spotbugs.version>3.1.0-RC7</spotbugs.version>
     </properties>
 
     <dependencyManagement>
@@ -96,7 +97,7 @@
             <dependency>
                 <groupId>de.thetaphi</groupId>
                 <artifactId>forbiddenapis</artifactId>
-                <version>2.3</version>
+                <version>${forbiddenapis.version}</version>
                 <scope>provided</scope>
                 <optional>true</optional>
             </dependency>
@@ -197,7 +198,7 @@
                 <plugin>
                     <groupId>de.thetaphi</groupId>
                     <artifactId>forbiddenapis</artifactId>
-                    <version>2.3</version>
+                    <version>${forbiddenapis.version}</version>
                     <configuration>
                         <targetVersion>${maven.compiler.target}</targetVersion>
                         <failOnMissingClasses>false</failOnMissingClasses>
@@ -310,7 +311,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.2</version>
+                            <version>8.3</version>
                         </dependency>
                         <dependency>
                             <groupId>org.wikimedia.discovery</groupId>
@@ -360,7 +361,7 @@
                             <requireMavenVersion>
                                 <version>3.3.1</version>
                             </requireMavenVersion>
-                            <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule" />
+                            <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule"></NoPackageCyclesRule>
                         </rules>
                     </configuration>
                     <dependencies>
@@ -542,7 +543,7 @@
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.7</version>
+                    <version>1.6.8</version>
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>ossrh</serverId>
