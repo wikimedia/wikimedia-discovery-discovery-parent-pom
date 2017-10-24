@@ -648,7 +648,6 @@
                             <report>dependency-info</report>
                             <report>dependency-management</report>
                             <report>distribution-management</report>
-                            <report>help</report>
                             <report>project-team</report>
                             <report>plugin-management</report>
                             <report>plugins</report>
