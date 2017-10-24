@@ -787,5 +787,82 @@
                 </snapshotRepository>
             </distributionManagement>
         </profile>
+        <profile>
+            <id>wmf-repo</id>
+            <repositories>
+                <!-- disable Maven central -->
+                <repository>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <url>http://repo1.maven.org/maven2</url>
+                </repository>
+
+                <!-- Repository information for archiva.wikimedia.org. -->
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>wikimedia.mirrored</id>
+                    <name>Wikimedia Mirrored Repository</name>
+                    <url>https://archiva.wikimedia.org/repository/mirrored</url>
+                </repository>
+
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>wikimedia.releases</id>
+                    <name>Wikimedia Release Repository</name>
+                    <url>https://archiva.wikimedia.org/repository/releases</url>
+                </repository>
+
+                <repository>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                    <id>wikimedia.snaphots</id>
+                    <name>Wikimedia Snapshot Repository</name>
+                    <url>https://archiva.wikimedia.org/repository/snapshots</url>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <!-- disable Maven central -->
+                <pluginRepository>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <url>http://repo1.maven.org/maven2</url>
+                </pluginRepository>
+
+                <!-- Repository information for archiva.wikimedia.org. -->
+                <pluginRepository>
+                    <id>wikimedia.mirrored</id>
+                    <name>Wikimedia Mirrored Repository</name>
+                    <url>https://archiva.wikimedia.org/repository/mirrored/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
     </profiles>
 </project>
