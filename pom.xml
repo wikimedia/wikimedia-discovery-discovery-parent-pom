@@ -57,8 +57,7 @@
         <site>
             <id>discovery-parent-pom.site</id>
             <name>Discovery documentation</name>
-            <!-- dummy URL for the site, just to make mvn site:stage happy -->
-            <url>https://test.net/</url>
+            <url>https://doc.wikimedia.org/discovery-parent-pom/</url>
         </site>
     </distributionManagement>
 
