@@ -171,6 +171,11 @@
                                 <artifactId>fb-contrib</artifactId>
                                 <version>7.0.4.sb</version>
                             </plugin>
+                            <plugin>
+                                <groupId>jp.skypencil.findbugs.slf4j</groupId>
+                                <artifactId>bug-pattern</artifactId>
+                                <version>1.2.4</version>
+                            </plugin>
                         </plugins>
                     </configuration>
                     <dependencies>
