@@ -453,7 +453,7 @@
                     <version>3.0.0</version>
                     <configuration>
                         <quiet>true</quiet>
-                        <doclint>all</doclint>
+                        <doclint>all,-missing</doclint>
                         <failOnError>false</failOnError>
                     </configuration>
                     <executions>
