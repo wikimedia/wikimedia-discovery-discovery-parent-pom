@@ -301,6 +301,7 @@
                             <algorithm>SHA-256</algorithm>
                             <algorithm>SHA-512</algorithm>
                         </algorithms>
+                        <attachChecksums>true</attachChecksums>
                     </configuration>
                     <executions>
                         <execution>
