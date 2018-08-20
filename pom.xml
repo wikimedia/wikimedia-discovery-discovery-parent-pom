@@ -291,28 +291,6 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>net.nicoulaj.maven.plugins</groupId>
-                    <artifactId>checksum-maven-plugin</artifactId>
-                    <version>1.7</version>
-                    <configuration>
-                        <algorithms>
-                            <algorithm>MD5</algorithm>
-                            <algorithm>SHA-1</algorithm>
-                            <algorithm>SHA-256</algorithm>
-                            <algorithm>SHA-512</algorithm>
-                        </algorithms>
-                        <attachChecksums>true</attachChecksums>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>generate-checksums</id>
-                            <goals>
-                                <goal>artifacts</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>1.8</version>
@@ -651,10 +629,6 @@
                 <artifactId>forbiddenapis</artifactId>
             </plugin>
             <plugin>
-                <groupId>net.nicoulaj.maven.plugins</groupId>
-                <artifactId>checksum-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
@@ -767,15 +741,6 @@
             <id>release</id>
             <build>
                 <plugins>
-                    <?SORTPOM IGNORE?>
-                    <!--
-                        checksum must be run *before* GPG so that checksums are signed as well.
-                    -->
-                    <plugin>
-                        <groupId>net.nicoulaj.maven.plugins</groupId>
-                        <artifactId>checksum-maven-plugin</artifactId>
-                    </plugin>
-                    <?SORTPOM RESUME?>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
