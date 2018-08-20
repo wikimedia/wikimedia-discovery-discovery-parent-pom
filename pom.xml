@@ -767,6 +767,15 @@
             <id>release</id>
             <build>
                 <plugins>
+                    <?SORTPOM IGNORE?>
+                    <!--
+                        checksum must be run *before* GPG so that checksums are signed as well.
+                    -->
+                    <plugin>
+                        <groupId>net.nicoulaj.maven.plugins</groupId>
+                        <artifactId>checksum-maven-plugin</artifactId>
+                    </plugin>
+                    <?SORTPOM RESUME?>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
