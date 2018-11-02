@@ -141,7 +141,7 @@ analysis:
 </plugin>
 ```
 
-### jacoco-maven-plugin
+#### jacoco-maven-plugin
 
 Calculates the coverage of unit tests. Coverage of integration tests is not
 tracked as usually this isn't a metric which makes much sense. It is possible
@@ -153,6 +153,68 @@ at the moment. Feel free to enable such check in your child project.
 Create a git.properties file containing information on the current git commit.
 This can be used either to track where a jar comes from, or actively in your
 application, parsing it at runtime.
+
+#### pitest
+
+[Pitest](http://pitest.org/) is a mutation testing framework for Java. It is
+not enabled by default as mutation testing can be both expensive and
+problematic depending on the code under test.
+
+To activate it on a specific module you can add it to the pom.xml of a module
+in the build/plugins section. This will bind pitest to the `test` phase of the
+build.
+
+    <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+    </plugin>
+
+An alternative is to run pitest only on demand. In this case, no change to the
+pom.xml is required, and pitest can be invoked with:
+
+    ./mvnw org.pitest:pitest-maven:mutationCoverage
+
+Also note that pitest can run only on code that has been changed in the last
+commit:
+
+    ./mvnw org.pitest:pitest-maven:scmMutationCoverage
+
+Some test frameworks (randomizedtesting for example) require assertions to be
+enabled. Additional configuration for pitest to enable assertions:
+
+    <configuration>
+        <jvmArgs>
+            <value>-ea</value>
+        </jvmArgs>
+    </configuration>
+
+By default, pitest only enables stable mutators that don't generate too many
+equivalent mutations. To enable all mutators, add the following config:
+
+    <configuration>
+        <mutators>
+            <mutator>ALL</mutator>
+        </mutators>
+    </configuration>
+
+Or list [individual mutators](http://pitest.org/quickstart/mutators/) that you
+want to use.
+
+To add mutation testing reports to the maven site, add the following section to
+the reporting/plugins section of the modules tested:
+
+    <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>LATEST</version>
+        <reportSets>
+            <reportSet>
+                <reports>
+                    <report>report</report>
+                </reports>
+            </reportSet>
+        </reportSets>
+    </plugin>
 
 #### Standard Plugins
 
