@@ -216,6 +216,22 @@ the reporting/plugins section of the modules tested:
         </reportSets>
     </plugin>
 
+#### SonarQube
+
+A default configuration of the sonar-maven-plugin is provided. It sets
+properties that should be shared by all children projects:
+
+* sonar.host.url: https://sonarcloud.io
+* sonar.login: ${env.SONAR_API_KEY}
+* sonar.organization: wmftest
+
+Note that the SONAR_API_KEY is taken from an environment variable that needs to
+be defined outside of Maven.
+
+To publish to sonarcloud, run:
+
+    SONAR_API_KEY=your_api_key ./mvnw sonar:sonar
+
 #### Standard Plugins
 
 The version of all standard Maven plugins are defined, so that they don't
