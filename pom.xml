@@ -213,8 +213,8 @@
                             <!-- This will automatically choose the right signatures based on 'maven.compiler.target': -->
                             <bundledSignature>jdk-unsafe</bundledSignature>
                             <bundledSignature>jdk-deprecated</bundledSignature>
-                            <bundledSignaure>jdk-system-out</bundledSignaure>
-                            <bundledSignaure>jdk-non-portable</bundledSignaure>
+                            <bundledSignature>jdk-system-out</bundledSignature>
+                            <bundledSignature>jdk-non-portable</bundledSignature>
                         </bundledSignatures>
                         <signaturesArtifacts>
                             <signaturesArtifact>
