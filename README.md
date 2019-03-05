@@ -28,6 +28,11 @@ the pom itself if you want all the details.
 The standard Sonatype OSS endpoints are configured. This can be used to upload
 artifacts to Maven Central.
 
+To upload a project to WMF Archiva repository instead of Maven Central, you can
+activate the `deploy-archiva` profile:
+
+    ./mvnw deploy -P deploy-archiva
+
 ### Standard Properties
 
 * `maven.compiler.source=1.8`
