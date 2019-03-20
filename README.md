@@ -248,6 +248,17 @@ A number of reports are configured. Those will be generated as part of the
 maven site. Use `mvn site:site` to generate the site. In a multi module
 project, use `mvn site:site site:stage` to aggregate the sites of each modules.
 
+#### Vulnerability check
+
+The [dependency-check-maven plugin](https://jeremylong.github.io/DependencyCheck/dependency-check-maven/)
+allows to check your project against known vulnerabilities. Since this process
+is somewhat expansive, it is not enabled by default. It can be run manually
+with:
+
+    ./mvnw dependency-check:check
+
+The report will be available for each module in `target/dependency-check-report.html`.
+
 ## Building
 
 ### Maven Wrapper

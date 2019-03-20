@@ -393,7 +393,7 @@
                             <phase>validate</phase>
                             <configuration>
                                 <rules>
-                                    <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule" />
+                                    <NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule"></NoPackageCyclesRule>
                                 </rules>
                             </configuration>
                         </execution>
@@ -585,6 +585,11 @@
                         </execution>
                         -->
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>5.0.0-M2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.pitest</groupId>
