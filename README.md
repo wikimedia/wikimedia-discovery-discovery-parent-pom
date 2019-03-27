@@ -93,6 +93,13 @@ This check can be ignored by the @SuppressForbidden annotation.
 The usual Java linter. Mostly about style, but some rules help discover actual
 bugs. Rules chan be ignored with `@SupressWarnings("checkstyle:NameOfRule")`.
 
+Checkstyle is configured in the [discovery-maven-tool-configs
+project](https://github.com/wikimedia/wikimedia-discovery-discovery-maven-tool-configs/tree/master/src/main/resources/org/wikimedia/discovery/build/tools/checkstyle).
+
+A configuration for IntelliJ which follows those rules is available available
+on [Maven Central](http://central.maven.org/maven2/org/wikimedia/discovery/discovery-maven-tool-configs/).
+It can be imported in IntelliJ via `File -> Import Settings...`.
+
 #### maven-enforcer-plugin
 
 The maven-enforcer-plugin can enforce a number of rules. At the moment, we
