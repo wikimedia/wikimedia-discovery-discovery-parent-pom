@@ -517,6 +517,9 @@
                         <failBuildInCaseOfDifferentContentConflict>true</failBuildInCaseOfDifferentContentConflict>
                         <failBuildInCaseOfEqualContentConflict>false</failBuildInCaseOfEqualContentConflict>
                         <failBuildInCaseOfConflict>false</failBuildInCaseOfConflict>
+                        <ignoredClassPatterns>
+                            <ignoredClassPattern>^META-INF.versions.9.module-info$</ignoredClassPattern>
+                        </ignoredClassPatterns>
                     </configuration>
                     <executions>
                         <execution>
