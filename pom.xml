@@ -62,7 +62,7 @@
     </distributionManagement>
 
     <properties>
-        <discovery-maven-tool-configs.version>1.9</discovery-maven-tool-configs.version>
+        <discovery-maven-tool-configs.version>1.10</discovery-maven-tool-configs.version>
         <forbiddenapis.version>2.6</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -113,7 +113,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.6</version>
+                <version>1.18.8</version>
                 <scope>provided</scope>
                 <optional>true</optional>
             </dependency>
@@ -318,7 +318,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.18</version>
+                            <version>8.22</version>
                         </dependency>
                         <dependency>
                             <groupId>org.wikimedia.discovery</groupId>
