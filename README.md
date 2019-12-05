@@ -244,6 +244,19 @@ To publish to sonarcloud, run:
 
     SONAR_API_KEY=your_api_key ./mvnw sonar:sonar
 
+#### Deadcode4j
+
+[Deadcode4j](https://github.com/Scout24/deadcode4j) helps you find code that
+is no longer used by your application. It isn't bound to any lifecycle phase,
+but can be run manually with:
+
+    ./mvnw deadcode4j:find -Dmaven.test.skip=true
+
+To skip the packaging phase (if the project is already packaged, in case of
+repeated analysis), you can use:
+
+    ./mvnw deadcode4j:find.only
+
 #### Standard Plugins
 
 The version of all standard Maven plugins are defined, so that they don't
