@@ -63,12 +63,12 @@
 
     <properties>
         <discovery-maven-tool-configs.version>1.10</discovery-maven-tool-configs.version>
-        <forbiddenapis.version>2.6</forbiddenapis.version>
+        <forbiddenapis.version>2.7</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <slf4j.version>1.7.25</slf4j.version>
+        <slf4j.version>1.7.29</slf4j.version>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
@@ -113,14 +113,14 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.8</version>
+                <version>1.18.10</version>
                 <scope>provided</scope>
                 <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>3.12.2</version>
+                <version>3.14.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
