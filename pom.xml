@@ -62,7 +62,7 @@
     </distributionManagement>
 
     <properties>
-        <discovery-maven-tool-configs.version>1.10</discovery-maven-tool-configs.version>
+        <discovery-maven-tool-configs.version>1.11</discovery-maven-tool-configs.version>
         <forbiddenapis.version>2.7</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -619,6 +619,36 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>org.scalastyle</groupId>
+                    <artifactId>scalastyle-maven-plugin</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <verbose>false</verbose>
+                        <failOnViolation>true</failOnViolation>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        <failOnWarning>true</failOnWarning>
+                        <configLocation>org/wikimedia/discovery/build/tools/scalastyle/scalastyle.xml</configLocation>
+                        <sourceDirectory>${project.basedir}/src/main/scala</sourceDirectory>
+                        <testSourceDirectory>${project.basedir}/src/test/scala</testSourceDirectory>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.wikimedia.discovery</groupId>
+                            <artifactId>discovery-maven-tool-configs</artifactId>
+                            <version>${discovery-maven-tool-configs.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>validate</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <phase>test</phase>
+                          </execution>
+                      </executions>
+                </plugin>
+                <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>3.6.0.1398</version>
@@ -854,6 +884,16 @@
                         <executions>
                             <execution>
                                 <id>duplicate-classes-check</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.scalastyle</groupId>
+                        <artifactId>scalastyle-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
                                 <phase>none</phase>
                             </execution>
                         </executions>
