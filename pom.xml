@@ -171,12 +171,12 @@
                             <plugin>
                                 <groupId>com.mebigfatguy.fb-contrib</groupId>
                                 <artifactId>fb-contrib</artifactId>
-                                <version>7.0.4.sb</version>
+                                <version>7.4.7</version>
                             </plugin>
                             <plugin>
                                 <groupId>jp.skypencil.findbugs.slf4j</groupId>
                                 <artifactId>bug-pattern</artifactId>
-                                <version>1.2.4</version>
+                                <version>1.5.0</version>
                             </plugin>
                         </plugins>
                     </configuration>
