@@ -485,7 +485,6 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>3.0.0-M1</version>
                     <configuration>
-                        <releaseProfiles>release</releaseProfiles>
                         <preparationGoals>sortpom:sort clean verify</preparationGoals>
                         <goals>deploy</goals>
                         <!-- explicitely disable site-deploy -->
@@ -802,6 +801,12 @@
     <profiles>
         <profile>
             <id>release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
