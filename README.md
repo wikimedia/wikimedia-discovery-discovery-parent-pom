@@ -25,13 +25,14 @@ the pom itself if you want all the details.
 
 ### Distribution Management
 
-The standard Sonatype OSS endpoints are configured. This can be used to upload
-artifacts to Maven Central.
+By default, deployments are done to WMF archiva repository. To deploy to Maven
+Central instead, use the `deploy-central` profile:
 
-To upload a project to WMF Archiva repository instead of Maven Central, you can
-activate the `deploy-archiva` profile:
+    ./mvnw deploy -P deploy-central
 
-    ./mvnw deploy -P deploy-archiva
+or via a release:
+
+    ./mvnw -B -P deploy-central release:prepare && ./mvnw -B -P deploy-central release:perform
 
 ### Standard Properties
 
@@ -307,12 +308,18 @@ your `settings.xml`.
 
 ### Release
 
-As part of the release, we upload artifacts to Sonatype OSS. This requires
-signing the artifacts. So in addition to the SNAPSHOT deployment prerequisites,
-you will need a GPG key. You will be prompted for the passphrase during the
-`release:perform` phase.
+As part of the release, we upload artifacts to WFM Archiva repository or to
+Sonatype OSS (Maven Central). This requires signing the artifacts. So in
+addition to the SNAPSHOT deployment prerequisites, you will need a GPG key. You
+will be prompted for the passphrase during the `release:perform` phase.
 
-To release:
+To release to WMF Archiva:
 
-* `./mvnw release:prepare`
-* `./mvnw release:perform`
+* `./mvnw -B release:prepare`
+* `./mvnw -B release:perform`
+
+To release to Maven Central:
+
+* `./mvnw -B -P deploy-central release:prepare`
+* `./mvnw -B -P deploy-central release:perform`
+

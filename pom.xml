@@ -47,18 +47,15 @@
 
     <distributionManagement>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>archiva.releases</id>
+            <name>Wikimedia Release Repository</name>
+            <url>https://archiva.wikimedia.org/repository/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>archiva.snapshots</id>
+            <name>Wikimedia Snapshot Repository</name>
+            <url>https://archiva.wikimedia.org/repository/snapshots/</url>
         </snapshotRepository>
-        <site>
-            <id>discovery-parent-pom.site</id>
-            <name>Discovery documentation</name>
-            <url>https://doc.wikimedia.org/discovery-parent-pom/</url>
-        </site>
     </distributionManagement>
 
     <properties>
@@ -718,10 +715,6 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
@@ -902,19 +895,30 @@
             </build>
         </profile>
         <profile>
-            <id>deploy-archiva</id>
+            <id>deploy-central</id>
             <distributionManagement>
                 <repository>
-                    <id>archiva.releases</id>
-                    <name>Wikimedia Release Repository</name>
-                    <url>https://archiva.wikimedia.org/repository/releases/</url>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
                 <snapshotRepository>
-                    <id>archiva.snapshots</id>
-                    <name>Wikimedia Snapshot Repository</name>
-                    <url>https://archiva.wikimedia.org/repository/snapshots/</url>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
+                <site>
+                    <id>discovery-parent-pom.site</id>
+                    <name>Discovery documentation</name>
+                    <url>https://doc.wikimedia.org/discovery-parent-pom/</url>
+                </site>
             </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>wmf-repo</id>
