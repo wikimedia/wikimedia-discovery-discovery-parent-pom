@@ -137,6 +137,7 @@
                     <artifactId>sortpom-maven-plugin</artifactId>
                     <version>2.11.0</version>
                     <configuration>
+                        <expandEmptyElements>false</expandEmptyElements>
                         <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
                         <sortDependencies>scope,groupId,artifactId</sortDependencies>
                         <sortPlugins>groupId,artifactId</sortPlugins>
