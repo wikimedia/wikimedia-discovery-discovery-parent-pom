@@ -56,6 +56,11 @@
             <name>Wikimedia Snapshot Repository</name>
             <url>https://archiva.wikimedia.org/repository/snapshots/</url>
         </snapshotRepository>
+        <site>
+            <id>discovery-parent-pom.site</id>
+            <name>Discovery documentation</name>
+            <url>https://doc.wikimedia.org/discovery-parent-pom/</url>
+        </site>
     </distributionManagement>
 
     <properties>
@@ -906,11 +911,6 @@
                     <id>ossrh</id>
                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
-                <site>
-                    <id>discovery-parent-pom.site</id>
-                    <name>Discovery documentation</name>
-                    <url>https://doc.wikimedia.org/discovery-parent-pom/</url>
-                </site>
             </distributionManagement>
             <build>
                 <plugins>
