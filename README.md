@@ -315,11 +315,12 @@ will be prompted for the passphrase during the `release:perform` phase.
 
 To release to WMF Archiva:
 
+* `./mvnw -B release:clean`
 * `./mvnw -B release:prepare`
 * `./mvnw -B release:perform`
 
 To release to Maven Central:
 
-* `./mvnw -B -P deploy-central release:prepare`
-* `./mvnw -B -P deploy-central release:perform`
-
+* `./mvnw -B -P deploy-central,gpg release:clean`
+* `./mvnw -B -P deploy-central,gpg release:prepare`
+* `./mvnw -B -P deploy-central,gpg release:perform`
