@@ -57,7 +57,7 @@ discover if you don't already know them.
 
 If you decide to use [Lombok](http://jnb.ociweb.com/jnb/jnbJan2010.html) you
 should probably add a `lombok.config` file in your main package. See the
-[docs](https://projectlombok.org/features/configurationhttps://projectlombok.org/features/configuration)
+[docs](https://projectlombok.org/features/configuration)
 if you want more infos.
 
         lombok.equalsAndHashCode.callSuper = call
@@ -262,6 +262,23 @@ repeated analysis), you can use:
 
 The version of all standard Maven plugins are defined, so that they don't
 change unexpectedly.
+
+#### Dependency plugin analysis
+Dependency plugin allows analysis of specified dependencies - which dependencies are in
+use and not explicitly defined, and which aren't in use but defined. While useful, by
+default all dependencies that are used outside of the code (like the servlet container for
+web.xml) will be reported as unused. To mitigate this, you can use the following
+configuration to ignore non-compile dependencies from analysis:
+```
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <configuration>
+            <ignoreNonCompile>true</ignoreNonCompile>
+        </configuration>
+    </plugin>
+```
+Before doing that - please make sure dependencies reported are actually used.
 
 ### Reports
 
