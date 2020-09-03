@@ -567,6 +567,11 @@
                     <version>2.7</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <version>1.0.2</version>
+                </plugin>
+                <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.8.5</version>
