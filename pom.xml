@@ -74,7 +74,7 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
-        <spotbugs.version>4.0.1</spotbugs.version>
+        <spotbugs.version>4.1.2</spotbugs.version>
     </properties>
 
     <dependencyManagement>
@@ -165,15 +165,15 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.0.0</version>
+                    <version>4.0.4</version>
                     <configuration>
                         <effort>high</effort>
                         <threshold>low</threshold>
                         <excludeFilterFile>org/wikimedia/discovery/build/tools/spotbugs/spotbugs-excludes.xml</excludeFilterFile>
                         <plugins>
                             <plugin>
-                                <groupId>com.mebigfatguy.fb-contrib</groupId>
-                                <artifactId>fb-contrib</artifactId>
+                                <groupId>com.mebigfatguy.sb-contrib</groupId>
+                                <artifactId>sb-contrib</artifactId>
                                 <version>7.4.7</version>
                             </plugin>
                             <plugin>
