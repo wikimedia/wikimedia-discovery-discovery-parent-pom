@@ -321,6 +321,6 @@ To release to WMF Archiva:
 
 To release to Maven Central:
 
-* `./mvnw -B -P deploy-central,gpg release:clean`
-* `./mvnw -B -P deploy-central,gpg release:prepare`
-* `./mvnw -B -P deploy-central,gpg release:perform`
+* `./mvnw -B -P deploy-central release:clean`
+* `./mvnw -B -P deploy-central release:prepare`
+* `./mvnw -B -P deploy-central release:perform`
