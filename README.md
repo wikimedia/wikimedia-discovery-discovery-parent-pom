@@ -120,7 +120,7 @@ the following can be added to the child pom, in the `<plugins>` section:
     <artifactId>maven-enforcer-plugin</artifactId>
     <executions>
           <execution>
-                <id>enforce-rules</id>
+                <id>enforce-no-package-cycles</id>
                 <!-- disable enforcer as this project has package cyclic dependencies -->
                 <phase>none</phase>
           </execution>
