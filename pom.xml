@@ -64,7 +64,7 @@
     </distributionManagement>
 
     <properties>
-        <discovery-maven-tool-configs.version>1.16</discovery-maven-tool-configs.version>
+        <discovery-maven-tool-configs.version>1.17</discovery-maven-tool-configs.version>
         <forbiddenapis.version>3.1</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -76,7 +76,7 @@
         <sonar.java.spotbugs.reportPaths>target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
-        <spotbugs.version>4.1.2</spotbugs.version>
+        <spotbugs.version>4.2.3</spotbugs.version>
     </properties>
 
     <dependencyManagement>
@@ -182,7 +182,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.0.4</version>
+                    <version>${spotbugs.version}</version>
                     <configuration>
                         <effort>high</effort>
                         <threshold>low</threshold>
