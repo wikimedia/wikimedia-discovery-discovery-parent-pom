@@ -519,6 +519,29 @@
                     <version>3.2.0</version>
                 </plugin>
                 <plugin>
+                    <!--
+                        In most cases, the assembly plugin with the
+                        "jar-with-dependencies" descriptor should be used
+                        instead of the shade plugin. See README.md for more
+                        context.
+                    -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.2.4</version>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>shade</id>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <phase>package</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.9.1</version>

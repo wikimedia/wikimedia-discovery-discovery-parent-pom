@@ -64,6 +64,16 @@ if you want more infos.
         lombok.extern.findbugs.addSuppressFBWarnings = true
         lombok.addLombokGeneratedAnnotation = true
 
+### Jar with dependencies / ueberjar
+
+In some cases, it makes sense to publish an artifact that includes project code
+and dependencies. For example to publish a runnable jar, or a single artifact
+executed in specific context. In most cases, the [maven-assembly-plugin with
+the "jar-with-dependencies"](https://maven.apache.org/plugins/maven-assembly-plugin/descriptor-refs.html#jar-with-dependencies)
+is the simplest solution. The [maven-shade-plugin](http://maven.apache.org/plugins/maven-shade-plugin/)
+can be used for more complex use cases, for example when you require merging
+properties files or other metadata.
+
 ### plugins
 
 #### sortpom-maven-plugin
