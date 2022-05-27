@@ -65,7 +65,7 @@
 
     <properties>
         <discovery-maven-tool-configs.version>1.21</discovery-maven-tool-configs.version>
-        <forbiddenapis.version>3.1</forbiddenapis.version>
+        <forbiddenapis.version>3.3</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,7 +76,7 @@
         <sonar.java.spotbugs.reportPaths>target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
-        <spotbugs.version>4.2.3</spotbugs.version>
+        <spotbugs.version>4.7.0</spotbugs.version>
     </properties>
 
     <dependencyManagement>
@@ -117,14 +117,14 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.18</version>
+                <version>1.18.24</version>
                 <scope>provided</scope>
                 <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>3.19.0</version>
+                <version>3.22.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -182,7 +182,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>${spotbugs.version}</version>
+                    <version>4.7.0.0</version>
                     <configuration>
                         <effort>high</effort>
                         <threshold>low</threshold>
@@ -348,7 +348,8 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.40</version>
+                            <!-- 9.3 is currently the latest version supporting Java 8 -->
+                            <version>9.3</version>
                         </dependency>
                         <dependency>
                             <groupId>org.wikimedia.discovery</groupId>
