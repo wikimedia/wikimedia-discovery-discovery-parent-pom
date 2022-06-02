@@ -163,6 +163,37 @@ analysis:
     </configuration>
 </plugin>
 ```
+##### How to fix duplicates:
+There can be various reasons why classes or files are duplicated. Some scenarios and their solutions are provided below:
+- Two dependencies can both rely on a third dependency but of different versions. The third dependency could be named differently although they are the same, for example maybe if the project's ownership changed or the project's naming convention changed. In this case, `groupId` would be different but the `artifactId` would be the same (asm:asm, org.ow2.asm:asm). Try to keep the latest dependency and exclude the older one. Search for both dependencies in [search.maven.org](https://search.maven.org/) and check the last updated date. Whichever one is older, exclude it.
+  - **How to exclude a dependency?** First find who is using the old dependency (spark_core in the example below). Run `./mvnw dependency:tree` or `./mvnw --projects <sub-module-name> dependency:tree`. Search by the name of the dependency you want to exclude (objenesis in the example below). Once you find who uses it, go to the pom.xml file, under the dependency you just found (spark_core here), do this:
+    ```
+    <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-core_2.11</artifactId>
+        <scope>provided</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    ```
+- Sometimes a project can copy-paste its dependencies into its root. This does not show up as dependency in the dependency-tree but look at the folder strcuture of the the projects that are causing duplication errors, you may find folders that seem to not belong there. Example: projectX causes duplication error with projectY. The files that are listed as duplicated seem to belong to projectX (e.g com.projectX.fileName). Looking at the folder strcuture of projectY, you see a folder called projectX. So now you can exclude projectX from your pom.xml using the method described above.
+- Sometimes only one file is duplicated in multiple projects. Those could be standard files and their patterns can be ignored. See [Ignoring Dependencies and Resources.md](https://github.com/basepom/duplicate-finder-maven-plugin/blob/master/docs/Ignoring%20Dependencies%20and%20Resources.md) for more. Example:
+  ```
+  <plugin>
+      <groupId>org.basepom.maven</groupId>
+      <artifactId>duplicate-finder-maven-plugin</artifactId>
+      <configuration>
+          <ignoredResourcePatterns>
+              <ignoredResourcePattern>nameOfYourFile_1</ignoredResourcePattern>
+              <ignoredResourcePattern>nameOfYourFile_2</ignoredResourcePattern>
+          </ignoredResourcePatterns>
+      </configuration>
+  </plugin>
+  ```
 
 #### jacoco-maven-plugin
 
