@@ -76,7 +76,7 @@
         <sonar.java.spotbugs.reportPaths>target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
-        <spotbugs.version>4.7.0</spotbugs.version>
+        <spotbugs.version>4.7.1</spotbugs.version>
     </properties>
 
     <dependencyManagement>
