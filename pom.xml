@@ -70,6 +70,15 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <scala.compat.version>2.13</scala.compat.version>
+        <scala.scala-maven-plugin.version>4.3.0</scala.scala-maven-plugin.version>
+        <!-- For scala < 2.13 this should be -Ywarn-unused-imports -->
+        <scala.scala-maven-plugin.warn-unused-imports>-Ywarn-unused:imports</scala.scala-maven-plugin.warn-unused-imports>
+        <scala.scalafix-maven-plugin.version>0.1.6_0.10.0</scala.scalafix-maven-plugin.version>
+        <scala.scalatest-maven-plugin.version>2.0.0</scala.scalatest-maven-plugin.version>
+        <scala.scalatest.version>3.2.13</scala.scalatest.version>
+        <scala.version>2.13.8</scala.version>
+        <semanticdb.version>4.5.13</semanticdb.version>
         <slf4j.version>1.7.30</slf4j.version>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.java.checkstyle.reportPaths>target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
@@ -81,6 +90,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest_${scala.compat.version}</artifactId>
+                <version>${scala.scalatest.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -323,6 +342,50 @@
                         </execution>
                     </executions>
                 </plugin>
+                <!-- https://mvnrepository.com/artifact/io.github.evis/scalafix-maven-plugin -->
+                <plugin>
+                    <groupId>io.github.evis</groupId>
+                    <artifactId>scalafix-maven-plugin_${scala.compat.version}</artifactId>
+                    <version>${scala.scalafix-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <!-- see http://davidb.github.com/scala-maven-plugin -->
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>${scala.scala-maven-plugin.version}</version>
+                    <configuration>
+                        <compilerPlugins>
+                            <compilerPlugin>
+                                <groupId>org.scalameta</groupId>
+                                <artifactId>semanticdb-scalac_${scala.version}</artifactId>
+                                <version>${semanticdb.version}</version>
+                            </compilerPlugin>
+                        </compilerPlugins>
+                        <args>
+                            <arg>-Xfatal-warnings</arg>
+                            <arg>-unchecked</arg>
+                            <!-- when using higher kinded types in our code, we should
+                              make it explicit. Failing to do so will trigger a WARN at compile time -->
+                            <arg>-language:higherKinds</arg>
+                            <arg>${scala.scala-maven-plugin.warn-unused-imports}</arg>
+                            <arg>-feature</arg>
+                            <arg>-deprecation</arg>
+                            <arg>-dependencyfile</arg>
+                            <arg>${project.build.directory}/.scala_dependencies</arg>
+                            <arg>-target:jvm-${maven.compiler.target}</arg>
+                        </args>
+                        <addScalacArgs>-target:jvm-${maven.compiler.target}</addScalacArgs>
+                        <secondaryCacheDir>${project.build.directory}/sbt_1.0_zinc_org.scala-sbt</secondaryCacheDir>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
@@ -455,7 +518,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>3.0.0-M7</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -708,6 +771,25 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.scalatest</groupId>
+                    <artifactId>scalatest-maven-plugin</artifactId>
+                    <version>${scala.scalatest-maven-plugin.version}</version>
+                    <configuration>
+                        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                        <junitxml>.</junitxml>
+                        <filereports>WDF TestSuite.txt</filereports>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>test</id>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
