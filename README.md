@@ -97,7 +97,7 @@ annotation.
 Checks for methods you should never use. For example deprecated methods,
 methods that have known performance issues, ...
 
-This check can be ignored by the @SuppressForbidden annotation.
+This check can be ignored by the `@SuppressForbidden` annotation.
 
 #### maven-checkstyle-plugin
 
@@ -107,9 +107,18 @@ bugs. Rules chan be ignored with `@SupressWarnings("checkstyle:NameOfRule")`.
 Checkstyle is configured in the [discovery-maven-tool-configs
 project](https://github.com/wikimedia/wikimedia-discovery-discovery-maven-tool-configs/tree/master/src/main/resources/org/wikimedia/discovery/build/tools/checkstyle).
 
-A configuration for IntelliJ which follows those rules is available available
+A configuration for IntelliJ which follows those rules is available
 on [Maven Central](http://central.maven.org/maven2/org/wikimedia/discovery/discovery-maven-tool-configs/).
 It can be imported in IntelliJ via `File -> Import Settings...`.
+
+#### spotless-maven-plugin
+
+The spotless-maven-plugin formats code. It is configured to format java code to comply with the
+[Google Java Style](https://google.github.io/styleguide/javaguide.html).
+Furthermore, it is configured to…
+
+* …use 4 spaces for indentation (instead of 2)
+* …organize imports to comply with check-style rules (no unused, sorted, grouped)
 
 #### maven-enforcer-plugin
 
