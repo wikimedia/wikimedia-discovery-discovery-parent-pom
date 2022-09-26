@@ -27,6 +27,12 @@
             <email>guillaume.lederrey@wikimedia.org</email>
             <timezone>Europe/Zurich</timezone>
         </developer>
+        <developer>
+            <id>pfischer</id>
+            <name>Peter Fischer</name>
+            <email>pfischer@wikimedia.org</email>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
     </developers>
 
     <prerequisites>
@@ -544,6 +550,17 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>3.0.0-M7</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                            <configuration>
+                                <failIfNoTests>false</failIfNoTests>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
