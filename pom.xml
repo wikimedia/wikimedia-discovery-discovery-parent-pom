@@ -4,7 +4,7 @@
 
     <groupId>org.wikimedia.discovery</groupId>
     <artifactId>discovery-parent-pom</artifactId>
-    <version>1.62-SNAPSHOT</version>
+    <version>1.62</version>
     <packaging>pom</packaging>
 
     <name>Discovery parent pom</name>
@@ -42,7 +42,7 @@
     <scm>
         <connection>scm:git:https://gerrit.wikimedia.org/r/wikimedia/discovery/discovery-parent-pom</connection>
         <developerConnection>scm:git:ssh://gerrit.wikimedia.org:29418/wikimedia/discovery/discovery-parent-pom</developerConnection>
-        <tag>HEAD</tag>
+        <tag>discovery-parent-pom-1.62</tag>
         <url>https://gerrit.wikimedia.org/r/admin/projects/wikimedia/discovery/discovery-parent-pom</url>
     </scm>
 
