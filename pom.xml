@@ -77,11 +77,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <scala.compat.version>2.13</scala.compat.version>
-        <scala.scala-maven-plugin.version>4.3.0</scala.scala-maven-plugin.version>
+        <scala.scala-maven-plugin.version>4.7.2</scala.scala-maven-plugin.version>
         <!-- For scala < 2.13 this should be -Ywarn-unused-imports -->
         <scala.scala-maven-plugin.warn-unused-imports>-Ywarn-unused:imports</scala.scala-maven-plugin.warn-unused-imports>
-        <scala.scalafix-maven-plugin.version>0.1.6_0.10.0</scala.scalafix-maven-plugin.version>
-        <scala.scalatest-maven-plugin.version>2.0.0</scala.scalatest-maven-plugin.version>
+        <scala.scalatest-maven-plugin.version>2.2.0</scala.scalatest-maven-plugin.version>
         <scala.scalatest.version>3.2.13</scala.scalatest.version>
         <scala.version>2.13.8</scala.version>
         <semanticdb.version>4.5.13</semanticdb.version>
@@ -182,7 +181,7 @@
                 <plugin>
                     <groupId>com.diffplug.spotless</groupId>
                     <artifactId>spotless-maven-plugin</artifactId>
-                    <version>2.25.0</version>
+                    <version>2.27.2</version>
                     <configuration>
                         <java>
                             <googleJavaFormat>
@@ -377,7 +376,7 @@
                 <plugin>
                     <groupId>io.github.evis</groupId>
                     <artifactId>scalafix-maven-plugin_${scala.compat.version}</artifactId>
-                    <version>${scala.scalafix-maven-plugin.version}</version>
+                    <version>0.1.7_0.10.4</version>
                 </plugin>
                 <plugin>
                     <!-- see http://davidb.github.com/scala-maven-plugin -->
@@ -626,7 +625,7 @@
                          symbolic links in test resources
                          ref: https://issues.apache.org/jira/browse/MRESOURCES-269
                      -->
-                    <version>3.1.0</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <!--
