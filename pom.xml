@@ -71,7 +71,7 @@
 
     <properties>
         <discovery-maven-tool-configs.version>1.25</discovery-maven-tool-configs.version>
-        <forbiddenapis.version>3.3</forbiddenapis.version>
+        <forbiddenapis.version>3.4</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -84,13 +84,13 @@
         <scala.scalatest.version>3.2.13</scala.scalatest.version>
         <scala.version>2.13.8</scala.version>
         <semanticdb.version>4.5.13</semanticdb.version>
-        <slf4j.version>1.7.30</slf4j.version>
+        <slf4j.version>2.0.3</slf4j.version>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.java.checkstyle.reportPaths>target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
         <sonar.java.spotbugs.reportPaths>target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
-        <spotbugs.version>4.7.1</spotbugs.version>
+        <spotbugs.version>4.7.3</spotbugs.version>
     </properties>
 
     <dependencyManagement>
@@ -148,7 +148,7 @@
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>3.22.0</version>
+                <version>3.23.1</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
