@@ -70,7 +70,7 @@
     </distributionManagement>
 
     <properties>
-        <discovery-maven-tool-configs.version>1.24</discovery-maven-tool-configs.version>
+        <discovery-maven-tool-configs.version>1.25</discovery-maven-tool-configs.version>
         <forbiddenapis.version>3.3</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
