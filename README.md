@@ -30,7 +30,7 @@ Central instead, use the `deploy-central` profile:
 
     ./mvnw deploy -P deploy-central
 
-or via a release:
+or via a release, see section [Release](#Release):
 
     ./mvnw -B -P deploy-central release:prepare && ./mvnw -B -P deploy-central release:perform
 
@@ -380,6 +380,51 @@ As part of the release, we upload artifacts to WFM Archiva repository or to
 Sonatype OSS (Maven Central). This requires signing the artifacts. So in
 addition to the SNAPSHOT deployment prerequisites, you will need a GPG key. You
 will be prompted for the passphrase during the `release:perform` phase.
+
+#### Prepare `~/.m2/settings.xml`
+
+Make sure your `settings.xml` can hold encrypted passwords by [creating a master password](https://maven.apache.org/guides/mini/guide-encryption.html#how-to-create-a-master-password).
+
+##### Store Credentials
+
+During the release process, the release plugin needs to make authorized requests to
+`gerrit.wikimedia.org` and `oss.sonatype.org` (if deploying to maven central).
+The required credentials can be stored (encrypted!) inside `settings.xml`.
+
+1. For **gerrit** (applies only if you connect via HTTP instead of SSH) go to
+   [HTTP Credentials](https://gerrit.wikimedia.org/r/settings/#HTTPCredentials),
+   generate a new password (unless you already have one), 
+   and take note of username and this password.
+2. Encrypt your gerrit account password via `./mvnw --encrypt-password`.
+3. In your `settings.xml` create a new `servers/server` section where
+   * `id` is `gerrit.wikimedia.org`
+   * `username` is the username from above
+   * `password` is the password from above
+
+
+1. For **sonatype** make sure you [have an account](https://central.sonatype.org/publish/publish-guide/) 
+   and have requested access to publish artifacts under the group `org.wikimedia`.
+2. Encrypt your sonatype account password via `./mvnw --encrypt-password`.
+3. In your `settings.xml` create a new `servers/server` section where
+  * `id` is `ossrh` (defined in the `deploy-central` profile of this POM)
+  * `username` is your sonatype username
+  * `password` is your encrypted sonatype password
+
+##### Setup GPG Key
+
+1. Follow the [general instructions to create a GPG key pair](https://wikitech.wikimedia.org/wiki/PGP_Keys).
+   You should publish your (public) key so others can verify any signature created with it.
+2. Make a note of your (long) key ID which becomes visible blow the line starting with `sec`,
+   when executing `gpg --list-secret-keys --keyid-format=long`.
+3. Encrypt your key passphrase via `./mvnw --encrypt-password`.
+4. Prepare your `~/.m2/settings.xml` for [maven-gpg-plugin](https://maven.apache.org/plugins/maven-gpg-plugin/usage.html):
+   1. Create a `servers/server` section where
+      * `id` is your long key ID from above
+      * `password` is the encrypted key passphrase
+        (including the curly braces; and yes, it's `<password>` and not `<passphrase>` as stated in the docs linked above)
+   2. Create a `profiles/profile` section where
+      * `id` is `deploy-central`
+      * `properties/gpg.keyname` is your long key ID from above, again
 
 To release to WMF Archiva:
 
