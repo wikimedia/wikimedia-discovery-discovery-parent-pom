@@ -377,9 +377,17 @@ your `settings.xml`.
 ### Release
 
 As part of the release, we upload artifacts to WFM Archiva repository or to
-Sonatype OSS (Maven Central). This requires signing the artifacts. So in
-addition to the SNAPSHOT deployment prerequisites, you will need a GPG key. You
-will be prompted for the passphrase during the `release:perform` phase.
+Sonatype OSS (Maven Central). This requires the proper permissions of the target
+repository to push and create signed/annotated tags, and signing the artifacts.
+So in addition to the SNAPSHOT deployment prerequisites, you will need a GPG key.
+You will be prompted for the passphrase during the `release:perform` phase.
+
+#### Permissions
+
+Duplicate the permissions of the [Search projects' access](https://gerrit.wikimedia.org/r/admin/repos/search,access)
+for the target repository. This requires being part of the group that can push,
+create tags, etc. See [WMF's Gerrit Privilege Policy](https://www.mediawiki.org/wiki/Gerrit/Privilege_policy#Requesting_Gerrit_privileges)
+to request membership in a group if needed.
 
 #### Prepare `~/.m2/settings.xml`
 
