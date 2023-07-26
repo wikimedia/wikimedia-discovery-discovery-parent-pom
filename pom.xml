@@ -621,11 +621,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <!-- stick to 3.1.0, 3.2.0 does not seem to be able to handle
-                         symbolic links in test resources
-                         ref: https://issues.apache.org/jira/browse/MRESOURCES-269
-                     -->
-                    <version>3.2.0</version>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <!--
