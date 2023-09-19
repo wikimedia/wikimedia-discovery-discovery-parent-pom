@@ -590,6 +590,7 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.2.0</version>
                     <configuration>
+                        <sourcepath>${project.build.directory}/generated-sources/delombok</sourcepath>
                         <quiet>true</quiet>
                         <doclint>all,-missing</doclint>
                         <failOnError>false</failOnError>
@@ -775,6 +776,23 @@
                                 <goal>mutationCoverage</goal>
                             </goals>
                             <phase>test</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>1.18.0.0</version>
+                    <configuration>
+                        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+                        <addOutputDirectory>false</addOutputDirectory>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>delombok</goal>
+                            </goals>
+                            <phase>generate-sources</phase>
                         </execution>
                     </executions>
                 </plugin>
