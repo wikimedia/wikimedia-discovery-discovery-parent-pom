@@ -374,6 +374,22 @@ To deploy a new SNAPSHOT to Sonatype OSS SNAPSHOT repository, just run:
 `./mvnw deploy`. This requires your Sonatype credentials to be configured in
 your `settings.xml`.
 
+### Versioning
+
+Depending on the kind of change it should be accompanied by a change of the minor or major project
+version, see [semantic versioning](https://semver.org/):
+
+* Bump the **major** version:
+  ````shell
+  ./mvnw build-helper:parse-version versions:set \
+  -DnewVersion=${parsedVersion.nextMajorVersion}.0.0-SNAPSHOT
+  ````
+* Bump the **minor** version:
+  ````shell
+  ./mvnw build-helper:parse-version versions:set \
+  -DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.nextMinorVersion}.0-SNAPSHOT
+  ````
+
 ### Release
 
 As part of the release, we upload artifacts to WFM Archiva repository or to
