@@ -71,7 +71,7 @@
 
     <properties>
         <discovery-maven-tool-configs.version>1.29</discovery-maven-tool-configs.version>
-        <forbiddenapis.version>3.4</forbiddenapis.version>
+        <forbiddenapis.version>3.6</forbiddenapis.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,16 +81,16 @@
         <!-- For scala < 2.13 this should be -Ywarn-unused-imports -->
         <scala.scala-maven-plugin.warn-unused-imports>-Ywarn-unused:imports</scala.scala-maven-plugin.warn-unused-imports>
         <scala.scalatest-maven-plugin.version>2.2.0</scala.scalatest-maven-plugin.version>
-        <scala.scalatest.version>3.2.13</scala.scalatest.version>
-        <scala.version>2.13.8</scala.version>
+        <scala.scalatest.version>3.2.17</scala.scalatest.version>
+        <scala.version>2.13.12</scala.version>
         <semanticdb.version>4.5.13</semanticdb.version>
-        <slf4j.version>2.0.3</slf4j.version>
+        <slf4j.version>2.0.9</slf4j.version>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.java.checkstyle.reportPaths>target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
         <sonar.java.spotbugs.reportPaths>target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
         <sonar.login>${env.SONAR_API_KEY}</sonar.login>
         <sonar.organization>wmftest</sonar.organization>
-        <spotbugs.version>4.7.3</spotbugs.version>
+        <spotbugs.version>4.8.1</spotbugs.version>
     </properties>
 
     <dependencyManagement>
@@ -141,14 +141,14 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.24</version>
+                <version>1.18.30</version>
                 <scope>provided</scope>
                 <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>3.23.1</version>
+                <version>3.24.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -206,7 +206,7 @@
                 <plugin>
                     <groupId>com.github.ekryd.sortpom</groupId>
                     <artifactId>sortpom-maven-plugin</artifactId>
-                    <version>2.12.0</version>
+                    <version>3.2.0</version>
                     <configuration>
                         <expandEmptyElements>false</expandEmptyElements>
                         <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
@@ -231,7 +231,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.7.0.0</version>
+                    <version>4.7.2.0</version>
                     <configuration>
                         <effort>high</effort>
                         <threshold>low</threshold>
@@ -419,17 +419,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.4.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.2.0</version>
                     <configuration>
                         <configLocation>org/wikimedia/discovery/build/tools/checkstyle/checkstyle.xml</configLocation>
                         <suppressionsLocation>org/wikimedia/discovery/build/tools/checkstyle/suppressions.xml</suppressionsLocation>
@@ -441,8 +441,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <!-- 9.3 is currently the latest version supporting Java 8 -->
-                            <version>9.3</version>
+                            <version>10.12.5</version>
                         </dependency>
                         <dependency>
                             <groupId>org.wikimedia.discovery</groupId>
@@ -476,7 +475,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.1.2</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -486,7 +485,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0-M3</version>
+                    <version>3.0.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>de.andrena.tools.nopackagecycles</groupId>
@@ -504,7 +503,7 @@
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
-                                        <version>3.3.1</version>
+                                        <version>3.5.2</version>
                                     </requireMavenVersion>
                                 </rules>
                             </configuration>
@@ -564,7 +563,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>3.0.1</version>
                     <executions>
                         <execution>
                             <id>sign-artifacts</id>
@@ -588,7 +587,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.4.1</version>
                     <configuration>
                         <sourcepath>${project.build.directory}/generated-sources/delombok</sourcepath>
                         <quiet>true</quiet>
@@ -607,12 +606,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.0-M1</version>
+                    <version>3.0.0-M6</version>
                     <configuration>
                         <preparationGoals>sortpom:sort clean verify</preparationGoals>
                         <goals>deploy</goals>
@@ -633,7 +632,7 @@
                     -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>3.2.4</version>
+                    <version>3.4.0</version>
                     <configuration>
                         <shadedArtifactAttached>true</shadedArtifactAttached>
                     </configuration>
@@ -673,12 +672,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.3.1</version>
+                    <version>3.3.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.basepom.maven</groupId>
                     <artifactId>duplicate-finder-maven-plugin</artifactId>
-                    <version>1.4.0</version>
+                    <version>1.5.1</version>
                     <configuration>
                         <failBuildInCaseOfDifferentContentConflict>true</failBuildInCaseOfDifferentContentConflict>
                         <failBuildInCaseOfEqualContentConflict>false</failBuildInCaseOfEqualContentConflict>
@@ -710,7 +709,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.8.1</version>
+                    <version>2.12.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -720,7 +719,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.5</version>
+                    <version>0.8.8</version>
                     <executions>
                         <execution>
                             <id>default-prepare-agent</id>
@@ -763,12 +762,12 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>5.3.2</version>
+                    <version>7.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.pitest</groupId>
                     <artifactId>pitest-maven</artifactId>
-                    <version>1.5.2</version>
+                    <version>1.9.5</version>
                     <executions>
                         <execution>
                             <id>pitest</id>
@@ -782,7 +781,7 @@
                 <plugin>
                     <groupId>org.projectlombok</groupId>
                     <artifactId>lombok-maven-plugin</artifactId>
-                    <version>1.18.0.0</version>
+                    <version>1.18.20.0</version>
                     <configuration>
                         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
                         <addOutputDirectory>false</addOutputDirectory>
@@ -848,12 +847,12 @@
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.8.0.2131</version>
+                    <version>3.9.1.2184</version>
                 </plugin>
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.8</version>
+                    <version>1.6.13</version>
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>ossrh</serverId>
@@ -864,7 +863,7 @@
                 <plugin>
                     <groupId>pl.project13.maven</groupId>
                     <artifactId>git-commit-id-plugin</artifactId>
-                    <version>4.0.2</version>
+                    <version>4.9.10</version>
                     <configuration>
                         <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
                         <generateGitPropertiesFile>true</generateGitPropertiesFile>
@@ -954,7 +953,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.4.5</version>
                 <reportSets>
                     <reportSet>
                         <reports>
