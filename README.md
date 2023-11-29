@@ -111,6 +111,22 @@ A configuration for IntelliJ which follows those rules is available
 on [Maven Central](http://central.maven.org/maven2/org/wikimedia/discovery/discovery-maven-tool-configs/).
 It can be imported in IntelliJ via `File -> Import Settings...`.
 
+In case of migration of a project with many checkstyle violations, it can be
+configured to not fail the build, but just report the violations. If the
+project is integrated with SonarQube, Sonar will complain if the number of
+violations increases:
+
+```
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-checkstyle-plugin</artifactId>
+  <configuration>
+    <failsOnError>false</failsOnError>
+    <failOnViolation>false</failOnViolation>
+  </configuration>
+</plugin>
+```
+
 #### spotless-maven-plugin
 
 The spotless-maven-plugin formats code. It is configured to format java code to comply with the
