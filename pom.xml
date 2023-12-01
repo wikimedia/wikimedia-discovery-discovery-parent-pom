@@ -455,7 +455,7 @@
                             <goals>
                                 <goal>check</goal>
                             </goals>
-                            <phase>test</phase>
+                            <phase>validate</phase>
                         </execution>
                     </executions>
                 </plugin>
